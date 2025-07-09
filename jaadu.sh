@@ -1,14 +1,7 @@
 #!/bin/bash
 
-# 👑 Wasabi S3 Mount Script - The Immortal Edition 👑
-# The final, definitive script with an optional auto-mount feature on reboot
-# using systemd services. This is the perfect blend of style, substance, and persistence.
-# Date: July 11, 2024 (Immortal Edition - systemctl Fix)
-
-# --- Stop on any error ---
 set -e
 
-# --- Awesome Colors & Emojis ---
 C_RESET='\033[0m'
 C_RED='\033[0;31m'
 C_GREEN='\033[0;32m'
@@ -28,7 +21,6 @@ E_CLOUD="☁️"
 E_REBOOT="🔄"
 E_SPINNER=("🌏" "🌍" "🌎")
 
-# --- Helper Functions ---
 print_banner() { echo -e "\n${C_MAGENTA}====================================================${C_RESET}\n${C_WHITE}$1${C_RESET}\n${C_MAGENTA}====================================================${C_RESET}"; }
 print_status() { echo -e "${C_CYAN}${E_GEAR} $1${C_RESET}"; }
 print_success() { echo -e "${C_GREEN}${E_SUCCESS} $1${C_RESET}"; }
@@ -52,7 +44,6 @@ run_with_loader() {
     if [ $exit_code -eq 0 ]; then echo -e "${C_GREEN}${E_SUCCESS} ${message}... Done!${C_RESET}"; else echo -e "${C_RED}${E_ERROR} ${message}... Failed!${C_RESET}"; exit 1; fi
 }
 
-# --- Configuration Variables ---
 REMOTE_NAME=""
 BUCKET_NAME=""
 ACCESS_KEY=""
@@ -60,8 +51,6 @@ SECRET_KEY=""
 REGION=""
 MOUNT_POINT=""
 LOG_FILE=""
-
-# --- Script Logic ---
 
 show_dashboard_banner() {
     clear; COLOR=$(get_random_color); BOLD='\033[1m'
@@ -136,11 +125,9 @@ EOF
             print_status "Enabling user lingering (for boot-time start)..."
             if sudo loginctl enable-linger "$(whoami)"; then print_success "User lingering enabled."; else print_error "Failed to enable user lingering."; fi
             
-            # --- THE FIX IS HERE: Using 'systemctl' instead of 'systemd' ---
             run_with_loader "Reloading systemd daemon" systemctl --user daemon-reload
             run_with_loader "Enabling service to start on boot" systemctl --user enable "$SERVICE_NAME"
             run_with_loader "Starting the service now" systemctl --user start "$SERVICE_NAME"
-            # --- END OF FIX ---
 
             sleep 2
             if ! systemctl --user is-active --quiet "$SERVICE_NAME"; then
