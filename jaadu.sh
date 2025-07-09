@@ -65,7 +65,7 @@ LOG_FILE=""
 
 show_dashboard_banner() {
     clear; COLOR=$(get_random_color); BOLD='\033[1m'
-    echo -e "${COLOR}"; echo "██████╗ ███████╗██╗   ██╗██╗██╗     "; echo "██╔══██╗██╔════╝██║   ██║██║██║     "; echo "██║  ██║█████╗  ██║   ██║██║██║     "; echo "██║  ██║██╔══╝  ╚██╗ ██╔╝██║██║     "; echo "██████╔╝███████╗ ╚████╔╝ ██║███████╗"; echo "╚═════╝ ╚══════╝  ╚═══╝  ╚═╝╚══════╝"; echo -e "${BOLD}🔥 WASABI S3 MOUNT SCRIPT BY DEVIL 🔥${C_RESET}"
+    echo -e "${COLOR}"; echo "██████╗ ███████╗██╗   ██╗██╗██╗     "; echo "██╔══██╗██╔════╝██║   ██║██║██║     "; echo "██║  ██║█████╗  ██║   ██║██║██║     "; echo "██║  ██║██╔══╝  ╚██╗ ██╔╝██║██║     "; echo "██████╔╝███████╗ ╚████╔╝ ██║███████╗"; echo "╚═════╝ ╚══════╝  ╚═══╝  ╚═╝╚══════╝"; echo -e "${BOLD}🔥 JAADU SCRIPT BY DEVIL 🔥${C_RESET}"
     echo; echo -e "${C_WHITE}${BOLD}Configuration Summary:${C_RESET}"; echo -e "${C_MAGENTA}----------------------------------------------------${C_RESET}"
     echo -e "${C_CYAN}Remote Name:${C_RESET} ${C_WHITE}${REMOTE_NAME}${C_RESET}"; echo -e "${C_CYAN}Bucket Name:${C_RESET} ${C_WHITE}${BUCKET_NAME}${C_RESET}"; echo -e "${C_CYAN}Region:     ${C_RESET} ${C_WHITE}${REGION}${C_RESET}"; echo -e "${C_CYAN}Mount Point:${C_RESET} ${C_WHITE}${MOUNT_POINT}${C_RESET}"; echo -e "${C_MAGENTA}----------------------------------------------------${C_RESET}"
 }
